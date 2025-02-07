@@ -78,7 +78,7 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 ### **Task Distribution Table**  
 | Task | Assigned Member |
 |------|----------------|
-| Process & ReadMe | Leen |
+| Process & Input Handling & ReadMe | Leen |
 | Scheduling Algorithm | Najlaa |
 | Event-Driven Simulation | Lujain |
 | Performance Metrics & Visualization | Jood |
