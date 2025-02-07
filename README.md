@@ -86,4 +86,4 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 ---
 
 ## **Conclusion**  
-Thank you for exploring **Process Scheduling Simulator**!
+Thank you for checking out **Process Scheduling Simulator**!
