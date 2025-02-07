@@ -57,18 +57,6 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 
 ---
 
-## **Screenshots**  
-
-### ** FCFS Condition (Equal CPU Burst Times)**  
-[placeholder]
-- When multiple processes have the **same next CPU burst**, the one that **arrived first** executes first.  
-
-### ** Preemption Condition**  
-[placeholder]
-- A new process **preempts the currently running process** if it has a **shorter remaining CPU burst**.  
-
----
-
 ## **Team Members**  
 
 - **Leen Alotaibi** (Leader) – `443200417`
