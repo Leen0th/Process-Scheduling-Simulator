@@ -32,15 +32,6 @@ class ProcessScheduler {
         }
     }
 
-    public static void main(String[] args) {
-        List<Process> processes = getProcesses();
-        displayProcesses(processes);
-
-        // Placeholder for scheduling algorithm
-        System.out.println("Scheduling Algorithm: Shortest remaining time first");
-        System.out.println("Context Switch: 1 ms");
-    }
-
     private static int getValidInteger(Scanner sc, String prompt, int min) {
         int value;
         while (true) {
@@ -57,5 +48,14 @@ class ProcessScheduler {
                 sc.next(); // Clear invalid input
             }
         }
+    }
+
+    public static void main(String[] args) {
+        List<Process> processes = getProcesses();
+        displayProcesses(processes);
+
+        // Placeholder for scheduling algorithm
+        System.out.println("Scheduling Algorithm: Shortest remaining time first");
+        System.out.println("Context Switch: 1 ms");
     }
 }
