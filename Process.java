@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Process {
     private int id;
     private int arrivalTime;
