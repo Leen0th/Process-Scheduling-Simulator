@@ -57,7 +57,7 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 
 ---
 
-## **Key Demonstrations**  
+## **Screenshots**  
 
 ### ** FCFS Condition (Equal CPU Burst Times)**  
 [placeholder]
