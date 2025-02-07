@@ -57,6 +57,17 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 
 ---
 
+## **Screenshots & Demonstrations**  
+### **FCFS Demonstration**  
+![FCFS Screenshot]
+*Processes with equal CPU burst times handled in FCFS order.*  
+
+### **Preemption Demonstration**  
+![Preemption Screenshot]
+*A newly arriving process with a shorter CPU burst preempts the current process.*  
+
+---
+
 ## **Team Members**  
 
 - **Leen Alotaibi** (Leader) – `443200417`
@@ -71,17 +82,6 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 | Scheduling Algorithm | Najlaa |
 | Event-Driven Simulation | Lujain |
 | Performance Metrics & Visualization | Jood |
-
----
-
-## **Screenshots & Demonstrations**  
-### **FCFS Demonstration**  
-![FCFS Screenshot]
-*Processes with equal CPU burst times handled in FCFS order.*  
-
-### **Preemption Demonstration**  
-![Preemption Screenshot]
-*A newly arriving process with a shorter CPU burst preempts the current process.*  
 
 ---
 
