@@ -71,8 +71,8 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 
 ## **Team Members**  
 
-- **Leen** (Leader) – `443200417`
-- **Jood** – `444203007`
+- **Leen Alotaibi** (Leader) – `443200417`
+- **Jood Alkhrashi** – `444203007`
 - **Lujain** – `444200785`  
 - **Najlaa** – `444200948`  
 
