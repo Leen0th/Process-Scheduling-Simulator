@@ -73,13 +73,13 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 - **Leen Alotaibi** (Leader) – `443200417`
 - **Jood Alkhrashi** – `444203007`
 - **Lujain** – `444200785`  
-- **Najlaa** – `444200948`  
+- **Najla Almazyad** – `444200948`  
 
 ### **Task Distribution Table**  
 | Task | Assigned Member |
 |------|----------------|
 | Process & User Interface & ReadMe | Leen |
-| Scheduling Algorithm | Najlaa |
+| Scheduling Algorithm | Najla |
 | Event-Driven Simulation | Lujain |
 | Performance Metrics & Visualization | Jood |
 
