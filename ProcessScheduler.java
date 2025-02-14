@@ -17,14 +17,14 @@ class ProcessScheduler {
     }
     
     public static void displayProcesses(List<Process> processes) {
-        System.out.print("Number of processes= " + processes.size() + " (");
+        System.out.print("\nNumber of processes= " + processes.size() + " (");
         for (int i = 0; i < processes.size(); i++) {
             System.out.print("P" + processes.get(i).getId());
             if (i < processes.size() - 1) {
                 System.out.print(", ");
             }
         }
-        System.out.println(")");
+        System.out.println(")\n");
 
         System.out.println("Arrival times and burst times as follows:");
         for (Process process : processes) {
@@ -50,105 +50,107 @@ class ProcessScheduler {
         }
     }
 
-        public static void processSchedulingSRTF(List<Process> processes) {
-            int time = 0;
-            int completed = 0;
-            int n = processes.size();
-            int totalWaitingTime = 0;
-            int totalTurnaroundTime = 0;
-            boolean[] isCompleted = new boolean[n];
-            List<String> ganttChart = new ArrayList<>();
-            int contextSwitchTime = 1;
+    public static void processSchedulingSRTF(List<Process> processes) {
+        int time = 0;
+        int completed = 0;
+        int n = processes.size();
+        int totalWaitingTime = 0;
+        int totalTurnaroundTime = 0;
+        boolean[] isCompleted = new boolean[n];
+        List<String> ganttChart = new ArrayList<>();
+        int contextSwitchTime = 1;
 
-            String lastProcess = "";
-            int startTime = time;
+        String lastProcess = "";
+        int startTime = time;
 
-            while (completed < n) { //Loop until all processes are completed
-                int shortest = -1;
-                int minRemainingTime = Integer.MAX_VALUE;
+        while (completed < n) { //Loop until all processes are completed
+            int shortest = -1;
+            int minRemainingTime = Integer.MAX_VALUE;
 
-                for (int i = 0; i < n; i++) { //select process based on SJF and FCFS
-                    Process p = processes.get(i);
-                    if (p.getArrivalTime() <= time && !isCompleted[i]) {
-                        if (p.getRemainingTime() < minRemainingTime) {
-                            minRemainingTime = p.getRemainingTime();
+            for (int i = 0; i < n; i++) { //select process based on SJF and FCFS
+                Process p = processes.get(i);
+                if (p.getArrivalTime() <= time && !isCompleted[i]) {
+                    if (p.getRemainingTime() < minRemainingTime) {
+                        minRemainingTime = p.getRemainingTime();
+                        shortest = i;
+                    } else if (p.getRemainingTime() == minRemainingTime) {
+                        if (shortest == -1 || p.getArrivalTime() < processes.get(shortest).getArrivalTime()) {
                             shortest = i;
-                        } else if (p.getRemainingTime() == minRemainingTime) {
-                            if (shortest == -1 || p.getArrivalTime() < processes.get(shortest).getArrivalTime()) {
-                                shortest = i;
-                            }
                         }
                     }
                 }
+            }
 
-                if (shortest == -1) { //No process is ready, context switch
-                    if (!lastProcess.equals("CS")) {
-                        ganttChart.add(time + "-" + (time + contextSwitchTime) + " CS");
-                        lastProcess = "CS";
-                    }
+            if (shortest == -1) {
+                if (!lastProcess.equals("CS")) {
+                    ganttChart.add(time + "-" + (time + contextSwitchTime) + " CS");
                     time += contextSwitchTime;
-                    continue;
+                    lastProcess = "CS";
+                } else {
+                    time++;
                 }
+                continue;
+            }
 
-                Process current = processes.get(shortest);
-                if (!lastProcess.equals("P" + current.getId())) { //Context switch between processes
-                    if (!lastProcess.isEmpty() && !lastProcess.equals("CS")) {
-                        ganttChart.add(startTime + "-" + time + " " + lastProcess);
-                        ganttChart.add(time + "-" + (time + contextSwitchTime) + " CS");
-                    }
-                    lastProcess = "P" + current.getId();
-                    startTime = time + contextSwitchTime;
+            Process current = processes.get(shortest);
+            if (!lastProcess.equals("P" + current.getId())) {
+                if (!lastProcess.isEmpty() && !lastProcess.equals("CS")) {
+                    ganttChart.add(startTime + "-" + time + " " + lastProcess);
+                }
+                if (!lastProcess.equals("CS") && !lastProcess.isEmpty()) {
+                    ganttChart.add(time + "-" + (time + contextSwitchTime) + " CS");
                     time += contextSwitchTime;
                 }
-
-                current.setRemainingTime(current.getRemainingTime() - 1); //Execute the selected process
-                time++;
-
-                if (current.getRemainingTime() == 0) { //Process completed
-                    completed++;
-                    isCompleted[shortest] = true;
-                    int turnaroundTime = time - current.getArrivalTime();
-                    int waitingTime = turnaroundTime - current.getBurstTime();
-
-                    current.setTurnaroundTime(turnaroundTime);
-                    current.setWaitingTime(waitingTime);
-
-                    totalTurnaroundTime += turnaroundTime;
-                    totalWaitingTime += waitingTime;
-                }
+                lastProcess = "P" + current.getId();
+                startTime = time;
             }
 
-            if (!lastProcess.isEmpty()) { //Add the last executed process 
-                ganttChart.add(startTime + "-" + time + " " + lastProcess);
-            }
+            current.setRemainingTime(current.getRemainingTime() - 1); //Execute the selected process
+            time++;
 
-            double avgWaitingTime = (double) totalWaitingTime / n; //Calculate average waiting time
-            double avgTurnaroundTime = (double) totalTurnaroundTime / n; //Calculate average turnaround time
-            double cpuUtilization = ((double) (time - (contextSwitchTime * (n - 1))) / time) * 100; //Calculate CPU utilization
+            if (current.getRemainingTime() == 0) { //Process completed
+                completed++;
+                isCompleted[shortest] = true;
+                int turnaroundTime = time - current.getArrivalTime();
+                int waitingTime = turnaroundTime - current.getBurstTime();
 
-            System.out.println("\nTime       Process/CS");
-            System.out.println("----------------------");
-            for (String step : ganttChart) {
-                System.out.println(step);
+                current.setTurnaroundTime(turnaroundTime);
+                current.setWaitingTime(waitingTime);
+
+                totalTurnaroundTime += turnaroundTime;
+                totalWaitingTime += waitingTime;
             }
-            System.out.println("\nPerformance Metrics");
-            System.out.println("Average Turnaround Time: " + avgTurnaroundTime);
-            System.out.println("Average Waiting Time: " + avgWaitingTime);
-            System.out.printf("CPU Utilization: %.2f%%\n", cpuUtilization);
         }
+
+        if (!lastProcess.isEmpty()) { //Add the last executed process 
+            ganttChart.add(startTime + "-" + time + " " + lastProcess);
+        }
+
+        double avgWaitingTime = (double) totalWaitingTime / n; //Calculate average waiting time
+        double avgTurnaroundTime = (double) totalTurnaroundTime / n; //Calculate average turnaround time
+        double cpuUtilization = ((double) (time - contextSwitchTime * Math.max(completed - 1, 0)) / time) * 100; //Calculate CPU utilization
+
+        System.out.println("\n");
+        System.out.printf("%-10s %-15s%n", "Time", "Process/CS");
+        System.out.println("---------------------");
+        for (String step : ganttChart) {
+            System.out.printf("%-10s %-15s%n", step.split(" ")[0], step.split(" ")[1]);
+        }
+        System.out.println("\nPerformance Metrics");
+        System.out.println("Average Turnaround Time: " + avgTurnaroundTime);
+        System.out.println("Average Waiting Time: " + avgWaitingTime);
+        System.out.printf("CPU Utilization: %.2f%%\n", cpuUtilization);
+    }
     
-
-
-    	
     public static void main(String[] args) {
         List<Process> processes = getProcesses();
         displayProcesses(processes);
         
+        System.out.println("\n");
         System.out.println("Scheduling Algorithm: Shortest remaining time first");
         System.out.println("Context Switch: 1 ms");
         
         processSchedulingSRTF(processes);
-
         
     }
 }
