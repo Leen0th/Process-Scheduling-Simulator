@@ -81,7 +81,7 @@ class ProcessScheduler {
                 }
             }
 
-            if (shortest == -1) {
+            if (shortest == -1) { //No process is ready, context switch
                 if (!lastProcess.equals("CS")) {
                     ganttChart.add(time + "-" + (time + contextSwitchTime) + " CS");
                     time += contextSwitchTime;
@@ -93,7 +93,7 @@ class ProcessScheduler {
             }
 
             Process current = processes.get(shortest);
-            if (!lastProcess.equals("P" + current.getId())) {
+            if (!lastProcess.equals("P" + current.getId())) { //Context switch between processes
                 if (!lastProcess.isEmpty() && !lastProcess.equals("CS")) {
                     ganttChart.add(startTime + "-" + time + " " + lastProcess);
                 }

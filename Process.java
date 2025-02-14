@@ -2,10 +2,10 @@ class Process {
     private int id;
     private int arrivalTime;
     private int burstTime;
-    private int remainingTime; // to help with scheduling calculations and performance metrics
-    private int completionTime; // to help with scheduling calculations and performance metrics
-    private int waitingTime; // to help with scheduling calculations and performance metrics
-    private int turnaroundTime; // to help with scheduling calculations and performance metrics
+    private int remainingTime; 
+    private int completionTime; 
+    private int waitingTime; 
+    private int turnaroundTime;
 
     public Process(int id, int arrivalTime, int burstTime) {
         this.id = id;
