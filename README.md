@@ -86,7 +86,7 @@ Time: 0–1 (P1) → 1–2 (CS) → 2–6 (P2)
 
 - **Leen Alotaibi** (Leader) – `443200417`
 - **Jood Alkhrashi** – `444203007`
-- **Lujain** – `444200785`  
+- **Lujain Alhusan** – `444200785`  
 - **Najla Almazyad** – `444200948`  
 
 ### **Task Distribution Table**  
