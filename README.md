@@ -59,7 +59,7 @@ Welcome! We present **Process Scheduling Simulator**, a Java-based program that 
 
 ## **Screenshots & Demonstrations**  
 ### **FCFS Demonstration**  
-![FCFS Screenshot](Screenshots/FCFSDemonstration.png)
+![FCFS Screenshot](FCFSDemonstration.png)
 *Processes with equal CPU burst times handled in FCFS order.*  
 
 Time: 7–12 (P3) → 12–13 (CS) → 13–18 (P4)
@@ -68,7 +68,7 @@ Time: 7–12 (P3) → 12–13 (CS) → 13–18 (P4)
 - This demonstrates FCFS behavior when two processes have the same burst time, but the one that arrived first is executed first.
 
 ### **Preemption Demonstration**  
-![Preemption Screenshot](Screenshots/PreemptionDemonstration.png)
+![Preemption Screenshot](PreemptionDemonstration.png)
 *A newly arriving process with a shorter CPU burst preempts the current process.*  
 
 Time: 0–1 (P1) → 1–2 (CS) → 2–6 (P2)
@@ -82,7 +82,7 @@ Time: 0–1 (P1) → 1–2 (CS) → 2–6 (P2)
 
 - **Leen Alotaibi** (Leader) – `443200417`
 - **Jood Alkhrashi** – `444203007`
-- **Lujain** – `444200785`  
+- **Lujain Alhusan** – `444200785`  
 - **Najla Almazyad** – `444200948`  
 
 ### **Task Distribution Table**  
